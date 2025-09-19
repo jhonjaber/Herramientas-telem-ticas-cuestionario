@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcial Interactivo de Tecnología</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .question-block {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .question-block:last-of-type {
+            border-bottom: none;
+        }
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .options-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options-list li label {
+            display: block;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            margin-bottom: 8px;
+        }
+        .options-list li label:hover {
+            background-color: #f0f4f8;
+            border-color: #a0b4c8;
+        }
+        input[type="radio"] {
+            margin-right: 12px;
+        }
+        #submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        #submit-btn:hover {
+            background-color: #2980b9;
+        }
+        #results {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+        .results-pass {
+             background-color: #e8f5e9;
+             color: #2e7d32;
+             display: block !important;
+        }
+        .results-fail {
+             background-color: #cabfc0;
+             color: #5718aa;
+             display: block !important;
+        }
+        .correct-answer {
+            background-color: #e8f5e9 !important;
+            border: 2px solid #43a047 !important;
+            color: #156d2a !important;
+            box-shadow: 0 0 0 2px #43a04733;
+        }
+        .incorrect-answer {
+            background-color: #ffebee !important;
+            border-color: #3f3333 !important;
+        }
+        .explanation {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+            font-size: 0.9em;
+            border-left: 4px solid #3498db;
+            display: none;
+        }
+    </style>
+    <!-- SheetJS para exportar a Excel -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <img src="logo Unit-Técnica.png" alt="Logo Unitecnica" style="height:60px;max-width:180px;">
+        </div>
+        <h1>Parcial de Tecnología y Gestión</h1>
+            <div style="font-size:1.5em;font-weight:600;text-align:center;margin-bottom:10px;
+                background: linear-gradient(90deg, #3498db 0%, #6dd5fa 100%); box-shadow: 0 2px 8px rgba(52,152,219,0.15); border-radius: 8px; padding: 12px 0; color: #0a2a6c; font-family: 'Brush Script MT', cursive;">
+                Docente: Jhon Jaber Giraldo Marín
+            </div>
+            <div style="display:flex;justify-content:center;gap:40px;margin-bottom:18px;">
+                <div>
+                    <label for="studentName"><b>Nombre del aprendiz:</b></label><br>
+                    <input type="text" id="studentName" name="studentName" required style="padding:8px;border-radius:5px;border:1px solid #ccc;width:220px;">
+                </div>
+                <div>
+                    <label for="subject"><b>Asignatura:</b></label><br>
+                    <input type="text" id="subject" name="subject" required style="padding:8px;border-radius:5px;border:1px solid #ccc;width:220px;">
+                </div>
+            </div>
+            <form id="quizForm">
+                <div class="question-block" data-answer="B">
+                <p class="question-title">1. ¿Cuál de las siguientes herramientas es considerada como un software de gestión de proyectos de código abierto?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q1" value="A"> A) Microsoft Project</label></li>
+                    <li><label><input type="radio" name="q1" value="B"> B) Redmine</label></li>
+                    <li><label><input type="radio" name="q1" value="C"> C) Asana</label></li>
+                    <li><label><input type="radio" name="q1" value="D"> D) Trello</label></li>
+                </ul>
+            </div>
+            <!-- Campos de nombre y asignatura movidos arriba, debajo del docente -->
+
+            <!-- PREGUNTAS 1-25 DEL CUESTIONARIO COMPLETO -->
+            <!-- Las preguntas se insertan aquí, copiadas del archivo 'primero.html' -->
+            <!-- ...existing code for all 25 questions, already cleaned ... -->
+            <div class="question-block" data-answer="D">
+                <p class="question-title">2. ¿Qué herramienta de gestión de proyectos ofrece integración nativa con Google Workspace?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q2" value="A"> A) Monday.com</label></li>
+                    <li><label><input type="radio" name="q2" value="B"> B) Jira</label></li>
+                    <li><label><input type="radio" name="q2" value="C"> C) Slack</label></li>
+                    <li><label><input type="radio" name="q2" value="D"> D) Trello</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">3. ¿Cuál de las siguientes opciones proporciona funcionalidades de diagramación de Gantt directamente?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q3" value="A"> A) Asana</label></li>
+                    <li><label><input type="radio" name="q3" value="B"> B) Smartsheet</label></li>
+                    <li><label><input type="radio" name="q3" value="C"> C) Basecamp</label></li>
+                    <li><label><input type="radio" name="q3" value="D"> D) Confluence</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="C">
+                <p class="question-title">4. ¿Qué herramienta es particularmente conocida por su enfoque en metodologías ágiles?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q4" value="A"> A) Microsoft Excel</label></li>
+                    <li><label><input type="radio" name="q4" value="B"> B) Microsoft Project</label></li>
+                    <li><label><input type="radio" name="q4" value="C"> C) Jira</label></li>
+                    <li><label><input type="radio" name="q4" value="D"> D) Toggl</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">5. ¿Cuál de las siguientes herramientas está orientada principalmente a la comunicación y colaboración en tiempo real en proyectos?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q5" value="A"> A) ClickUp</label></li>
+                    <li><label><input type="radio" name="q5" value="B"> B) Slack</label></li>
+                    <li><label><input type="radio" name="q5" value="C"> C) Basecamp</label></li>
+                    <li><label><input type="radio" name="q5" value="D"> D) Toggl</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="C">
+                <p class="question-title">6. ¿Cuáles características destacan en Asana como herramienta de gestión de proyectos?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q6" value="A"> A) Integración de correos electrónicos y mensajería instantánea</label></li>
+                    <li><label><input type="radio" name="q6" value="B"> B) Soporte para diagramas de Gantt intrínsecos</label></li>
+                    <li><label><input type="radio" name="q6" value="C"> C) Gestión de tareas y proyectos en tableros y cronogramas</label></li>
+                    <li><label><input type="radio" name="q6" value="D"> D) Monitoreo de tiempo de actividades de equipo</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">7. ¿Qué herramienta es conocida por su flexibilidad en la configuración de diferentes vistas como tableros, listas, y cronogramas?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q7" value="A"> A) Trello</label></li>
+                    <li><label><input type="radio" name="q7" value="B"> B) Monday.com</label></li>
+                    <li><label><input type="radio" name="q7" value="C"> C) Smartsheet</label></li>
+                    <li><label><input type="radio" name="q7" value="D"> D) Wrike</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="C">
+                <p class="question-title">8. ¿Qué herramienta es útil para gestionar la relación con los clientes y el seguimiento de incidencias, además de la gestión de proyectos?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q8" value="A"> A) Jira</label></li>
+                    <li><label><input type="radio" name="q8" value="B"> B) Zoho Projects</label></li>
+                    <li><label><input type="radio" name="q8" value="C"> C) Freshdesk</label></li>
+                    <li><label><input type="radio" name="q8" value="D"> D) Notion</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">9. ¿Qué es HTML?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q9" value="A"> A) Un lenguaje de programación usado para aplicaciones móviles.</label></li>
+                    <li><label><input type="radio" name="q9" value="B"> B) Un lenguaje de marcado utilizado para crear documentos web.</label></li>
+                    <li><label><input type="radio" name="q9" value="C"> C) Un software de edición de texto para páginas web.</label></li>
+                    <li><label><input type="radio" name="q9" value="D"> D) Un protocolo para servidores web.</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="C">
+                <p class="question-title">10. ¿Cuál es la función de la etiqueta &lt;head&gt; en HTML?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q10" value="A"> A) Contiene el contenido visual de la página.</label></li>
+                    <li><label><input type="radio" name="q10" value="B"> B) Define la estructura principal de la página.</label></li>
+                    <li><label><input type="radio" name="q10" value="C"> C) Almacena metadatos y contiene enlaces a scripts o estilos.</label></li>
+                    <li><label><input type="radio" name="q10" value="D"> D) Define los pies de página.</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="C">
+                <p class="question-title">11. En CSS, ¿qué propiedad se utiliza para cambiar el color de fondo de un elemento?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q11" value="A"> A) color</label></li>
+                    <li><label><input type="radio" name="q11" value="B"> B) font-style</label></li>
+                    <li><label><input type="radio" name="q11" value="C"> C) background-color</label></li>
+                    <li><label><input type="radio" name="q11" value="D"> D) border-color</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="C">
+                <p class="question-title">12. ¿Cuál de las siguientes sintaxis es correcta para establecer una hoja de estilo interna en HTML?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q12" value="A"> A) &lt;style src="styles.css"&gt;&lt;/style&gt;</label></li>
+                    <li><label><input type="radio" name="q12" value="B"> B) &lt;link rel="stylesheet" href="styles.css"&gt;</label></li>
+                    <li><label><input type="radio" name="q12" value="C"> C) &lt;style&gt; p { color: red; } &lt;/style&gt;</label></li>
+                    <li><label><input type="radio" name="q12" value="D"> D) &lt;script type="style"&gt; body { font-size: 14px; } &lt;/script&gt;</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">13. ¿Qué se describe mejor como una regla CSS que asigna estilos a elementos de clase 'menu'?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q13" value="A"> A) menu { font-size: 14px; }</label></li>
+                    <li><label><input type="radio" name="q13" value="B"> B) .menu { font-size: 14px; }</label></li>
+                    <li><label><input type="radio" name="q13" value="C"> C) *menu* { font-size: 14px; }</label></li>
+                    <li><label><input type="radio" name="q13" value="D"> D) #menu { font-size: 14px; }</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">14. ¿Cómo se crea un hipervínculo en HTML?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q14" value="A"> A) &lt;link&gt;Visit Page&lt;/link&gt;</label></li>
+                    <li><label><input type="radio" name="q14" value="B"> B) &lt;a href="http://example.com"&gt;Visit Page&lt;/a&gt;</label></li>
+                    <li><label><input type="radio" name="q14" value="C"> C) &lt;url src="http://example.com"&gt;Visit Page&lt;/url&gt;</label></li>
+                    <li><label><input type="radio" name="q14" value="D"> D) &lt;hyperlink to="http://example.com"&gt;Visit Page&lt;/hyperlink&gt;</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="A">
+                <p class="question-title">15. ¿Cuál es la diferencia entre las etiquetas &lt;div&gt; y &lt;span&gt; en HTML?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q15" value="A"> A) &lt;div&gt; es de bloque y &lt;span&gt; es en línea.</label></li>
+                    <li><label><input type="radio" name="q15" value="B"> B) &lt;div&gt; contiene solo texto y &lt;span&gt; solo imágenes.</label></li>
+                    <li><label><input type="radio" name="q15" value="C"> C) &lt;div&gt; aplica estilo y &lt;span&gt; no.</label></li>
+                    <li><label><input type="radio" name="q15" value="D"> D) No hay diferencia, ambas etiquetas son intercambiables.</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">16. ¿Qué propiedad CSS se debe usar para aplicar una imagen como fondo de una página web?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q16" value="A"> A) image-background</label></li>
+                    <li><label><input type="radio" name="q16" value="B"> B) background-image</label></li>
+                    <li><label><input type="radio" name="q16" value="C"> C) img-background</label></li>
+                    <li><label><input type="radio" name="q16" value="D"> D) set-background</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="D">
+                <p class="question-title">17. ¿Cuál de los siguientes es un beneficio principal de la colaboración en la nube?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q17" value="A"> A) Incremento de almacenamiento físico</label></li>
+                    <li><label><input type="radio" name="q17" value="B"> B) Dependencia total de software propietario</label></li>
+                    <li><label><input type="radio" name="q17" value="C"> C) Acceso limitado a documentos</label></li>
+                    <li><label><input type="radio" name="q17" value="D"> D) Comunicación y trabajo en equipo en tiempo real</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">18. ¿Qué servicio de nube ofrece una plataforma para desarrollar, administrar y ejecutar aplicaciones?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q18" value="A"> A) IaaS (Infraestructura como Servicio)</label></li>
+                    <li><label><input type="radio" name="q18" value="B"> B) PaaS (Plataforma como Servicio)</label></li>
+                    <li><label><input type="radio" name="q18" value="C"> C) SaaS (Software como Servicio)</label></li>
+                    <li><label><input type="radio" name="q18" value="D"> D) TaaS (Tecnología como Servicio)</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">19. En el contexto de la seguridad en la navegación, ¿qué significa HTTPS?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q19" value="A"> A) Hyper-Text Transmission Protocol Service</label></li>
+                    <li><label><input type="radio" name="q19" value="B"> B) Hyper-Text Transfer Protocol Secure</label></li>
+                    <li><label><input type="radio" name="q19" value="C"> C) Hyper-Text Transfer Protocol Standard</label></li>
+                    <li><label><input type="radio" name="q19" value="D"> D) Hyper-Text Transport Protocol Safe</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="C">
+                <p class="question-title">20. ¿Qué es un firewall y para qué se utiliza?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q20" value="A"> A) Un tipo de hardware que enfría los servidores</label></li>
+                    <li><label><input type="radio" name="q20" value="B"> B) Una herramienta para crear aplicaciones web</label></li>
+                    <li><label><input type="radio" name="q20" value="C"> C) Un dispositivo o software que filtra tráfico de red para proteger un sistema</label></li>
+                    <li><label><input type="radio" name="q20" value="D"> D) Un sistema para almacenar copias de seguridad</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="C">
+                <p class="question-title">21. ¿Qué técnica de búsqueda de información en línea es más efectiva para obtener resultados precisos?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q21" value="A"> A) Buscar por autor específico</label></li>
+                    <li><label><input type="radio" name="q21" value="B"> B) Utilizar términos generales</label></li>
+                    <li><label><input type="radio" name="q21" value="C"> C) Utilizar operadores booleanos</label></li>
+                    <li><label><input type="radio" name="q21" value="D"> D) Evitar comillas en las frases</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">22. Entre las siguientes herramientas para la creación de contenido visual, ¿cuál es conocida por su uso profesional en edición de imágenes?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q22" value="A"> A) Canva</label></li>
+                    <li><label><input type="radio" name="q22" value="B"> B) GIMP</label></li>
+                    <li><label><input type="radio" name="q22" value="C"> C) Paint</label></li>
+                    <li><label><input type="radio" name="q22" value="D"> D) Microsoft Word</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">23. ¿Qué concepto se refiere a transformar procesos manuales en procesos gestionados por tecnología y software?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q23" value="A"> A) Informatización</label></li>
+                    <li><label><input type="radio" name="q23" value="B"> B) Automatización</label></li>
+                    <li><label><input type="radio" name="q23" value="C"> C) Virtualización</label></li>
+                    <li><label><input type="radio" name="q23" value="D"> D) Digitalización</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">24. ¿Cuál es una medida efectiva de protección contra ataques de fuerza bruta?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q24" value="A"> A) Utilizar contraseñas cortas y fáciles de recordar</label></li>
+                    <li><label><input type="radio" name="q24" value="B"> B) Implementar autenticación multifactor</label></li>
+                    <li><label><input type="radio" name="q24" value="C"> C) Desactivar el firewall</label></li>
+                    <li><label><input type="radio" name="q24" value="D"> D) Compartir contraseñas a través de correos</label></li>
+                </ul>
+            </div>
+            <div class="question-block" data-answer="B">
+                <p class="question-title">25. ¿Qué opción representa una buena práctica de navegación segura en internet?</p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="q25" value="A"> A) Hacer clic en cualquier enlace sin verificar</label></li>
+                    <li><label><input type="radio" name="q25" value="B"> B) Descargar software solo de sitios oficiales</label></li>
+                    <li><label><input type="radio" name="q25" value="C"> C) Usar cuentas de usuario compartidas</label></li>
+                    <li><label><input type="radio" name="q25" value="D"> D) Compartir contraseñas mediante mensajes de texto</label></li>
+                </ul>
+            </div>
+
+
+            <button type="button" id="submit-btn">Calificar Examen</button>
+            <div id="results"></div>
+            <button type="button" id="export-btn" style="display:none;margin-top:15px;padding:10px 20px;font-size:1em;background:#27ae60;color:#fff;border:none;border-radius:6px;cursor:pointer;">Exportar a Excel</button>
+            <div id="students-table" style="margin-top:30px;display:none;"></div>
+        </form>
+    </div>
+
+    <script>
+
+        // Variables globales para acumulación de resultados
+        window.studentsResults = [];
+        window.studentCounter = 1;
+
+    document.getElementById('submit-btn').onclick = function() {
+            // Calcular resultados y mostrar calificación
+            // Deshabilitar todos los radios para evitar cambios después de calificar
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.disabled = true;
+            });
+            let score = 0;
+            const questionBlocks = document.querySelectorAll('.question-block');
+            const totalQuestions = questionBlocks.length;
+
+            questionBlocks.forEach(block => {
+                const correctAnswer = block.getAttribute('data-answer');
+                const questionName = block.querySelector('input[type="radio"]').name;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                // Limpiar estilos previos
+                block.querySelectorAll('li label').forEach(label => {
+                    label.classList.remove('correct-answer', 'incorrect-answer');
+                });
+                if (block.querySelector('.explanation')) {
+                    block.querySelector('.explanation').style.display = 'none';
+                }
+                if (selectedOption) {
+                    const userAnswer = selectedOption.value;
+                    const selectedLabel = selectedOption.closest('label');
+                    const correctLabel = block.querySelector(`input[value="${correctAnswer}"]`).closest('label');
+                    if (userAnswer === correctAnswer) {
+                        score++;
+                        selectedLabel.classList.add('correct-answer');
+                    } else {
+                        selectedLabel.classList.add('incorrect-answer');
+                        correctLabel.classList.add('correct-answer');
+                    }
+                    if (block.querySelector('.explanation')) {
+                        block.querySelector('.explanation').style.display = 'block';
+                    }
+                }
+            });
+
+            const percentage = (score / totalQuestions) * 100;
+            const resultsDiv = document.getElementById('results');
+            // Calcular correctas, incorrectas y omitidas
+            let correct = score;
+            let incorrect = 0;
+            let omitted = 0;
+            questionBlocks.forEach(block => {
+                const correctAnswer = block.getAttribute('data-answer');
+                const questionName = block.querySelector('input[type="radio"]').name;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                if (selectedOption) {
+                    if (selectedOption.value !== correctAnswer) {
+                        incorrect++;
+                    }
+                } else {
+                    omitted++;
+                }
+            });
+            // Mostrar resumen final
+            const calificacion = ((score / totalQuestions) * 30).toFixed(2);
+            const studentName = document.getElementById('studentName').value || '(Sin nombre)';
+            const subject = document.getElementById('subject').value || '(Sin asignatura)';
+            // Numerar estudiante
+            const studentNumber = window.studentCounter;
+            window.studentCounter++;
+            // Guardar resultado en array global
+            const studentResult = {
+                "N°": studentNumber,
+                "Nombre del aprendiz": studentName,
+                "Asignatura": subject,
+                "Docente": "Jhon Jaber Giraldo Marín",
+                "Puntuación": `${score}/${totalQuestions}`,
+                "Precisión (%)": percentage.toFixed(0),
+                "Correctas": correct,
+                "Incorrectas": incorrect,
+                "Omitidas": omitted,
+                "Calificación (30%)": calificacion
+            };
+            window.studentsResults.push(studentResult);
+
+            let felicitar = '';
+            if (score === totalQuestions && totalQuestions > 0) {
+                felicitar = '<div style="font-size:1.2em;color:#1565c0;font-weight:bold;margin-bottom:10px;">¡Felicitaciones! Has obtenido la nota máxima (30.00).</div>';
+            }
+            resultsDiv.innerHTML = `
+                ${felicitar}
+                <div style="font-size:1.3em;margin-bottom:10px;font-weight:bold;color:#2e7d32;">¡Lo has conseguido! Has completado el cuestionario.</div>
+                <div style="margin-bottom:10px;"><b>N°:</b> ${studentNumber}</div>
+                <div style="margin-bottom:10px;"><b>Nombre del aprendiz:</b> ${studentName}</div>
+                <div style="margin-bottom:10px;"><b>Asignatura:</b> ${subject}</div>
+                <div style="margin-bottom:10px;"><b>Docente:</b> Jhon Jaber Giraldo Marín</div>
+                <div style="margin-bottom:10px;"><b>Puntuación</b><br>${score}/${totalQuestions}</div>
+                <div style="margin-bottom:10px;"><b>Precisión</b><br>${percentage.toFixed(0)} %</div>
+                <div style="margin-bottom:10px;"><b>Correctas</b><br>${correct}</div>
+                <div style="margin-bottom:10px;"><b>Incorrectas</b><br>${incorrect}</div>
+                <div style="margin-bottom:10px;"><b>Omitidas</b><br>${omitted}</div>
+                <div style="margin-bottom:18px;font-size:1.7em;font-weight:bold;color:#1565c0;background:#e3f0ff;border-radius:8px;padding:10px;">
+                    Calificación (30%): ${calificacion}
+                </div>
+                <button id="review-btn" style="margin-top:15px;padding:10px 20px;font-size:1em;background:#3498db;color:#fff;border:none;border-radius:6px;cursor:pointer;">Revisar cuestionario</button>
+            `;
+            resultsDiv.className = percentage >= 60 ? 'results-pass' : 'results-fail';
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('submit-btn').style.display = 'none';
+            document.getElementById('review-btn').onclick = function(e) {
+                e.preventDefault();
+                // Crear encabezado de revisión si no existe, dentro del formulario
+                let reviewHeader = document.getElementById('review-header');
+                const quizForm = document.getElementById('quizForm');
+                if (!reviewHeader) {
+                    reviewHeader = document.createElement('div');
+                    reviewHeader.id = 'review-header';
+                    reviewHeader.innerHTML = '<h2 style="text-align:center;color:#1565c0;margin-top:30px;margin-bottom:18px;background:#e3f0ff;border-radius:8px;padding:10px;">Revisión del cuestionario</h2>';
+                    quizForm.parentNode.insertBefore(reviewHeader, quizForm);
+                }
+                // Scroll al encabezado de revisión
+                reviewHeader.scrollIntoView({ behavior: 'smooth' });
+                // Mostrar y resaltar respuestas correctas en verde para todas las preguntas
+                questionBlocks.forEach(block => {
+                    // Limpiar cualquier resaltado y etiqueta previa
+                    block.querySelectorAll('li label').forEach(label => {
+                        label.classList.remove('correct-answer', 'incorrect-answer');
+                        const oldTag = label.querySelector('.respuesta-correcta-tag');
+                        if (oldTag) oldTag.remove();
+                    });
+                    const correctAnswer = block.getAttribute('data-answer');
+                    // Resalta la respuesta correcta en verde y agrega etiqueta
+                    const correctLabel = block.querySelector(`input[value="${correctAnswer}"]`).closest('label');
+                    if (correctLabel) {
+                        correctLabel.classList.add('correct-answer');
+                        // Agregar etiqueta visible
+                        const tag = document.createElement('span');
+                        tag.textContent = 'Respuesta correcta';
+                        tag.className = 'respuesta-correcta-tag';
+                        tag.style.cssText = 'margin-left:12px;color:#43a047;font-weight:bold;font-size:1em;background:#e8f5e9;border-radius:5px;padding:2px 8px;border:1px solid #43a047;';
+                        correctLabel.appendChild(tag);
+                    }
+                    // Si hay explicación, la muestra
+                    if (block.querySelector('.explanation')) {
+                        block.querySelector('.explanation').style.display = 'block';
+                    }
+                });
+                // Asegurar que los radios sigan deshabilitados
+                document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    radio.disabled = true;
+                });
+            };
+            // Mostrar botón de exportar
+            document.getElementById('export-btn').style.display = 'inline-block';
+
+            // Mostrar tabla de resultados acumulados
+            mostrarTablaEstudiantes();
+    };
+
+        // Exportar a Excel todos los resultados acumulados
+        document.getElementById('export-btn').addEventListener('click', function() {
+            const exportData = window.studentsResults;
+            if (!exportData || exportData.length === 0) {
+                alert('No hay resultados acumulados para exportar.');
+                return;
+            }
+            // Crear hoja de datos
+            const ws = XLSX.utils.json_to_sheet(exportData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Resultados');
+            XLSX.writeFile(wb, 'Resultados_Examen.xlsx');
+        });
+
+        // Función para mostrar la tabla de resultados acumulados
+        function mostrarTablaEstudiantes() {
+            const tablaDiv = document.getElementById('students-table');
+            const datos = window.studentsResults;
+            if (!datos || datos.length === 0) {
+                tablaDiv.style.display = 'none';
+                return;
+            }
+            let html = '<table style="width:100%;border-collapse:collapse;background:#f8faff;box-shadow:0 2px 8px rgba(52,152,219,0.07);margin-bottom:30px;">';
+            html += '<thead><tr style="background:#3498db;color:#fff;">';
+            Object.keys(datos[0]).forEach(key => {
+                html += `<th style="padding:8px;border:1px solid #d0e2ff;">${key}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+            datos.forEach((row, idx) => {
+                html += '<tr>';
+                Object.values(row).forEach(val => {
+                    html += `<td style="padding:8px;border:1px solid #d0e2ff;text-align:center;">${val}</td>`;
+                });
+                html += '</tr>';
+            });
+            html += '</tbody></table>';
+            tablaDiv.innerHTML = html;
+            tablaDiv.style.display = 'block';
+        }
+        </script>
